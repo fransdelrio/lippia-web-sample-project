@@ -15,7 +15,7 @@ public class ShopHomePage extends PageBaseShop {
 
     public ShopHomePage(RemoteWebDriver driver) {
         super(driver);
-        this.url = ""; //here you can define the custom paths For example:"/search" --> www.googe.com/search
+        this.url = ""; //here you can define the custom paths For example:"/search" --> www.google.com/search
     }
 
     public void go(){
@@ -45,4 +45,5 @@ public class ShopHomePage extends PageBaseShop {
         Assert.assertTrue(isElementVisible(By.cssSelector(LABEL_MYACCOUNT_CSS_SELECTOR)), "No se ha encontrado el título My Account.");
     }
 
+    
 }
