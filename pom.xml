@@ -12,7 +12,6 @@
     <name>Lippia-web-example-project</name>
     <version>3.1.2.2</version>
 
-
     <properties>
         <crowd.project.name>Lippia-web-example-project</crowd.project.name>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -24,6 +23,7 @@
         <crowdar.driver.capabilities.json_path>src/main/resources/browsers/chromeCapabilities.json</crowdar.driver.capabilities.json_path>
         <crowdar.cucumber.option>src/test/resources/features --glue / --glue com/crowdar/bdd/cukes  --tags ${crowdar.cucumber.filter} --tags 'not @Ignore' --plugin pretty</crowdar.cucumber.option>
     </properties>
+
     <profiles>
         <profile>
             <id>Local</id>

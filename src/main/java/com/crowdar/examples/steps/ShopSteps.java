@@ -9,16 +9,18 @@ public class ShopSteps extends PageSteps {
 
     @Given("El cliente esta en la pagina Home del sitio My Store.")
     public void elClienteEstaEnLaPaginaHomeDelSitioMyStore() {
-        Injector._page(ShopHomePage.class).go();
+        Injector._page(ShopHomePage.class).go(); //Invocar a la página deseada y el método que se quiere ejecutar.
         Injector._page(ShopHomePage.class).verificarHome();
     }
 
     @When("El cliente hace click en el boton (.*).")
-    public void elClienteHaceClickEnElBoton() {
+    public void elClienteHaceClickEnElBoton(String button) {
+        Injector._page(ShopHomePage.class).clickSignInTab(button); //Click en pestaña Sign In.
     }
 
     @Then("El cliente verifica que fue redireccionado a la pagina (.*).")
-    public void elClienteVerificaQueFueRedireccionadoALaPaginaX() {
+    public void elClienteVerificaQueFueRedireccionadoALaPaginaX(String pag) {
+        Injector._page(ShopHomePage.class).verificarPagina(pag);
     }
 
     @When("El cliente coloca su email (.*).")
