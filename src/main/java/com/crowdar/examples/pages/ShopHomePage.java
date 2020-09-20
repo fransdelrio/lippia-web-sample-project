@@ -13,6 +13,7 @@ public class ShopHomePage extends PageBaseShop {
     private final String LABEL_MYACCOUNT_CSS_SELECTOR = "#center_column > h1";
     private final String SLIDER_HOME_ID = "slider_row";
     private final String TITLE_ALREADY_CSS_SELECTOR = "#login_form > h3:nth-child(1)";
+    private final String NAVIGATION_CSS_SELECTOR = ".navigation_page"; //Ej: Home->My Account
 
     public ShopHomePage(RemoteWebDriver driver) {
         super(driver);
@@ -28,7 +29,8 @@ public class ShopHomePage extends PageBaseShop {
     }
 
     public void verificarPagina(String pag){
-        Assert.assertTrue(isElementPresentAndDisplayed(By.cssSelector(TITLE_ALREADY_CSS_SELECTOR)), "El elemento no es visible.");
+        //Assert.assertTrue(isElementPresentAndDisplayed(By.cssSelector(TITLE_ALREADY_CSS_SELECTOR)), "El elemento no es visible.");
+        Assert.assertTrue(isElementVisible(By.cssSelector(LABEL_MYACCOUNT_CSS_SELECTOR)), "El elemento no es visible.");
     }
 
     /* Click en tab Sign In para ir a pantalla de Login */
@@ -39,7 +41,11 @@ public class ShopHomePage extends PageBaseShop {
         }
         else {clickElement(By.cssSelector(TAB_SIGNIN_CSS_SELECTOR));
         }
-     }
+    }
+
+    public void clickSignInButton(){
+        clickElement(By.id(BUTTON_SIGNIN_ID));
+    }
 
     /* Completar credenciales de acceso */
     public void enterLoginCredentials(String email, String pass) {
@@ -47,13 +53,8 @@ public class ShopHomePage extends PageBaseShop {
         completeField(By.id(INPUT_PASSWORD_ID), pass);
     }
 
-    public void clickSignInButton() {
-        clickElement(By.id(BUTTON_SIGNIN_ID));
-    }
-
     public void verifyPage(String page){
         Assert.assertTrue(isElementVisible(By.cssSelector(LABEL_MYACCOUNT_CSS_SELECTOR)), "No se ha encontrado el título My Account.");
     }
 
-    
 }

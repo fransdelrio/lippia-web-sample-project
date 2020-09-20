@@ -2,7 +2,9 @@
 
 This project has the intention of show in a practical way how to use Lippia Automation Framework to build automated tests using Gherkin and Page-Object pattern. This sample project includes the required components as binaries, docker containers and configuration files to simply download and run a set of sample tests in your local computer, using the Lippia container stack described bellow.
 
-***
+*********************
+Crowdar Academy 2020
+*********************
 
 
 ## Docker stack
