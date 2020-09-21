@@ -5,7 +5,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 
 public class ShopHomePage extends PageBaseShop {
-
     private final String TAB_SIGNIN_CSS_SELECTOR = ".login";
     private final String INPUT_EMAILADRESS_ID = "email";
     private final String INPUT_PASSWORD_ID = "passwd";
@@ -68,12 +67,9 @@ public class ShopHomePage extends PageBaseShop {
     public void enterLoginEmail(String email) {
         completeField(By.id(INPUT_EMAILADRESS_ID), email);
     }
+
     public void enterLoginPassword(String pass) {
         completeField(By.id(INPUT_PASSWORD_ID), pass);
-    }
-
-    public void verifyPage(String page){
-        Assert.assertTrue(isElementVisible(By.cssSelector(LABEL_MYACCOUNT_CSS_SELECTOR)), "No se ha encontrado el título My Account.");
     }
 
 }

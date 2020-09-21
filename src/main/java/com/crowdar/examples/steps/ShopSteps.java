@@ -32,5 +32,4 @@ public class ShopSteps extends PageSteps {
     public void elClienteIngresaSuPassword(String pw) {
         Injector._page(ShopHomePage.class).enterLoginPassword(pw);
     }
-
 }
