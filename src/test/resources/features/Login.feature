@@ -3,18 +3,15 @@ Feature: como cliente, quiero ingresar mis datos de acceso para iniciar sesión 
   @Login
   Scenario Outline: Inicio de sesion exitoso en el sitio de compras.
     Given El cliente esta en la pagina Home del sitio My Store.
-    When El cliente hace click en el boton <button>.
-    Then El cliente verifica que fue redireccionado a la pagina <pag>.
+    When El cliente hace click en el boton <SignInTab>.
+    Then El cliente verifica que fue redireccionado a la pagina <pag1>.
     When El cliente coloca su email <email>.
     And El cliente ingresa su password <pass>.
-    And El cliente hace click en el boton <button>.
-    Then El cliente verifica que fue redireccionado a la pagina My-Account.
+    And El cliente hace click en el boton <SignInButton>.
+    Then El cliente verifica que fue redireccionado a la pagina <pag2>.
     Examples:
-      | button  | email            | pass     |pag  |
-      | Sign In | fran@academy.com | 123456 |Login|
+      | SignInTab | email            | pass   | SignInButton | pag1  | pag2       |
+      | SignInTab | fran@academy.com | 123456 | SignInButton | Login | My-Account |
 
     #fran@academy.com
     #123456
-    #01/01/1985
-
-

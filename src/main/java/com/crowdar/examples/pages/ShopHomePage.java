@@ -6,7 +6,7 @@ import org.testng.Assert;
 
 public class ShopHomePage extends PageBaseShop {
 
-    private final String TAB_SIGNIN_CSS_SELECTOR = "#header > div.nav > div > div > nav > div.header_user_info > a";
+    private final String TAB_SIGNIN_CSS_SELECTOR = ".login";
     private final String INPUT_EMAILADRESS_ID = "email";
     private final String INPUT_PASSWORD_ID = "passwd";
     private final String BUTTON_SIGNIN_ID = "SubmitLogin";
@@ -29,17 +29,34 @@ public class ShopHomePage extends PageBaseShop {
     }
 
     public void verificarPagina(String pag){
-        //Assert.assertTrue(isElementPresentAndDisplayed(By.cssSelector(TITLE_ALREADY_CSS_SELECTOR)), "El elemento no es visible.");
-        Assert.assertTrue(isElementVisible(By.cssSelector(LABEL_MYACCOUNT_CSS_SELECTOR)), "El elemento no es visible.");
+    //       System.out.println(pag);
+        switch (pag){
+            case "Login":
+                //System.out.println(getWebElement(By.cssSelector(TITLE_ALREADY_CSS_SELECTOR)).getText());
+                Assert.assertEquals(getWebElement(By.cssSelector(TITLE_ALREADY_CSS_SELECTOR)).getText(),"ALREADY REGISTERED?");
+                break;
+             case "My-Account":
+                Assert.assertEquals(getWebElement(By.cssSelector(LABEL_MYACCOUNT_CSS_SELECTOR)).getText(),"MY ACCOUNT");
+                break;
+             default:
+                 System.out.println("Error amego");
+                 break;
+        }
     }
 
-    /* Click en tab Sign In para ir a pantalla de Login */
-    public void clickSignInTab(String button) {
-        //System.out.println("boton"+ button);
-        if (isElementPresent(By.id(BUTTON_SIGNIN_ID)) && button == "Sign In"){
+    /* Click en tab Sign In o en botón Sign In */
+    public void clickControl(String control) {
+/*        switch (control) {
+            case "SignInTab":
+                clickElement(By.cssSelector(TAB_SIGNIN_CSS_SELECTOR));
+                break;
+            case "SignInButton":
+                clickElement(By.id(BUTTON_SIGNIN_ID));
+                break;                                                  */
+        if(isElementPresent(By.id(BUTTON_SIGNIN_ID))) {
             clickElement(By.id(BUTTON_SIGNIN_ID));
-        }
-        else {clickElement(By.cssSelector(TAB_SIGNIN_CSS_SELECTOR));
+        }else{
+            clickElement(By.cssSelector(TAB_SIGNIN_CSS_SELECTOR));
         }
     }
 
@@ -48,8 +65,10 @@ public class ShopHomePage extends PageBaseShop {
     }
 
     /* Completar credenciales de acceso */
-    public void enterLoginCredentials(String email, String pass) {
+    public void enterLoginEmail(String email) {
         completeField(By.id(INPUT_EMAILADRESS_ID), email);
+    }
+    public void enterLoginPassword(String pass) {
         completeField(By.id(INPUT_PASSWORD_ID), pass);
     }
 

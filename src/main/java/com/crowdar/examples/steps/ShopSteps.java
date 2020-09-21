@@ -14,8 +14,8 @@ public class ShopSteps extends PageSteps {
     }
 
     @When("El cliente hace click en el boton (.*).")
-    public void elClienteHaceClickEnElBoton(String button) {
-        Injector._page(ShopHomePage.class).clickSignInTab(button); //Click en pestaña Sign In.
+    public void elClienteHaceClickEnElBoton(String controlX) {
+        Injector._page(ShopHomePage.class).clickControl(controlX); //Click en pestaña Sign In.
     }
 
     @Then("El cliente verifica que fue redireccionado a la pagina (.*).")
@@ -25,11 +25,12 @@ public class ShopSteps extends PageSteps {
 
     @When("El cliente coloca su email (.*).")
     public void elClienteColocaSuEmail(String email) {
+        Injector._page(ShopHomePage.class).enterLoginEmail(email);
     }
 
     @And("El cliente ingresa su password (.*).")
     public void elClienteIngresaSuPassword(String pw) {
+        Injector._page(ShopHomePage.class).enterLoginPassword(pw);
     }
-
 
 }
