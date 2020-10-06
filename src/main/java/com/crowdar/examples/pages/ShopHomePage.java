@@ -27,6 +27,14 @@ public class ShopHomePage extends PageBaseShop {
         Assert.assertTrue(isElementPresentAndDisplayed(By.id(SLIDER_HOME_ID)), "El elemento no es visible.");
     }
 
+    public void verifyLoginPage(){
+        Assert.assertEquals(getWebElement(By.cssSelector(TITLE_ALREADY_CSS_SELECTOR)).getText(),"ALREADY REGISTERED?");
+    }
+
+    public void verifyMyAccountPage(){
+        Assert.assertEquals(getWebElement(By.cssSelector(LABEL_MYACCOUNT_CSS_SELECTOR)).getText(),"MY ACCOUNT");
+    }
+
     public void verificarPagina(String pag){
     //       System.out.println(pag);
         switch (pag){
@@ -37,25 +45,15 @@ public class ShopHomePage extends PageBaseShop {
              case "My-Account":
                 Assert.assertEquals(getWebElement(By.cssSelector(LABEL_MYACCOUNT_CSS_SELECTOR)).getText(),"MY ACCOUNT");
                 break;
-             default:
-                 System.out.println("Error amego");
-                 break;
-        }
-    }
-
-    /* Click en tab Sign In o en botón Sign In */
-    public void clickControl(String control) {
-/*        switch (control) {
-            case "SignInTab":
-                clickElement(By.cssSelector(TAB_SIGNIN_CSS_SELECTOR));
+            case "DressesPage":
+            //    Assert.assertEquals(getWebElement(By.cssSelector(LABEL_MYACCOUNT_CSS_SELECTOR)).getText(),"MY ACCOUNT");
                 break;
-            case "SignInButton":
-                clickElement(By.id(BUTTON_SIGNIN_ID));
-                break;                                                  */
-        if(isElementPresent(By.id(BUTTON_SIGNIN_ID))) {
-            clickElement(By.id(BUTTON_SIGNIN_ID));
-        }else{
-            clickElement(By.cssSelector(TAB_SIGNIN_CSS_SELECTOR));
+            case "ProductPage":
+                //    Assert.assertEquals(getWebElement(By.cssSelector(LABEL_MYACCOUNT_CSS_SELECTOR)).getText(),"MY ACCOUNT");
+                break;
+             default:
+                 System.out.println("Error!!");
+                 break;
         }
     }
 
@@ -63,11 +61,14 @@ public class ShopHomePage extends PageBaseShop {
         clickElement(By.id(BUTTON_SIGNIN_ID));
     }
 
+    public void clickSignInTab(){
+        clickElement(By.cssSelector(TAB_SIGNIN_CSS_SELECTOR));
+    }
+
     /* Completar credenciales de acceso */
     public void enterLoginEmail(String email) {
         completeField(By.id(INPUT_EMAILADRESS_ID), email);
     }
-
     public void enterLoginPassword(String pass) {
         completeField(By.id(INPUT_PASSWORD_ID), pass);
     }
